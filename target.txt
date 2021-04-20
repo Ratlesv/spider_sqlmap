@@ -1,0 +1,39 @@
+(GET)http://testphp.vulnweb.com
+(GET)http://testphp.vulnweb.com/AJAX/index.php
+(GET)http://testphp.vulnweb.com/Details/color-printer/3/
+(GET)http://testphp.vulnweb.com/Details/network-attached-storage-dlink/1/
+(GET)http://testphp.vulnweb.com/Details/web-camera-a4tech/2/
+(GET)http://testphp.vulnweb.com/Mod_Rewrite_Shop/
+(GET)http://testphp.vulnweb.com/artists.php
+(GET)http://testphp.vulnweb.com/artists.php?artist=1
+(GET)http://testphp.vulnweb.com/artists.php?artist=2
+(GET)http://testphp.vulnweb.com/artists.php?artist=3
+(POST)http://testphp.vulnweb.com/cart.php - params = price (HIDDEN), addcart (HIDDEN)
+(GET)http://testphp.vulnweb.com/cart.php
+(GET)http://testphp.vulnweb.com/categories.php
+(GET)http://testphp.vulnweb.com/disclaimer.php
+(GET)http://testphp.vulnweb.com/guestbook.php
+(GET)http://testphp.vulnweb.com/hpp/
+(GET)http://testphp.vulnweb.com/index.php
+(GET)http://testphp.vulnweb.com/listproducts.php?artist=1
+(GET)http://testphp.vulnweb.com/listproducts.php?artist=2
+(GET)http://testphp.vulnweb.com/listproducts.php?artist=3
+(GET)http://testphp.vulnweb.com/listproducts.php?cat=1
+(GET)http://testphp.vulnweb.com/listproducts.php?cat=2
+(GET)http://testphp.vulnweb.com/listproducts.php?cat=3
+(GET)http://testphp.vulnweb.com/listproducts.php?cat=4
+(GET)http://testphp.vulnweb.com/login.php
+(GET)http://testphp.vulnweb.com/privacy.php
+(GET)http://testphp.vulnweb.com/product.php?pic=1
+(GET)http://testphp.vulnweb.com/product.php?pic=2
+(GET)http://testphp.vulnweb.com/product.php?pic=3
+(GET)http://testphp.vulnweb.com/product.php?pic=4
+(GET)http://testphp.vulnweb.com/product.php?pic=5
+(GET)http://testphp.vulnweb.com/product.php?pic=6
+(GET)http://testphp.vulnweb.com/product.php?pic=7
+(POST)http://testphp.vulnweb.com/search.php?test=query - params = searchFor (TEXT), goButton (SUBMIT)
+(POST)http://testphp.vulnweb.com/secured/newuser.php - params = uuname (TEXT), upass (PASSWORD), upass2 (PASSWORD), urname (TEXT), ucc (TEXT), uemail (TEXT), uphone (TEXT), signup (SUBMIT)
+(GET)http://testphp.vulnweb.com/signup.php
+(GET)http://testphp.vulnweb.com/userinfo.php
+(POST)http://testphp.vulnweb.com/userinfo.php - params = uname (TEXT), pass (PASSWORD)
+(GET)http://testphp.vulnweb.com?pp=12

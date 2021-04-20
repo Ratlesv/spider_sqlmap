@@ -9,10 +9,18 @@ import re
 import sys
 import threading
 import urllib.parse
+import time
 
+
+####third part####
+import optimize_target
+import sqlmap
+import sqlmapapi
+#import mode_management
+#import output_manage
 from bs4 import BeautifulSoup
 import requests
-from fake_useragent import UserAgent
+#from fake_useragent import UserAgent
 
 ARGS = None
 IGNORED_EXTENSIONS = [".pdf", ".jpg", ".jpeg", ".png", ".gif", ".doc", ".docx", ".eps", ".wav",
@@ -54,6 +62,8 @@ def parse_arguments():
     parser.add_argument("--output-file", "-o", help="The file into which the obtained URLs should be written")
     parser.add_argument("--verbose", "-v", help="Be more verbose. Can be specified multiple times.", action="count",
                         default=0)
+    parser.add_argument("--mode", "-a", help="Choose sqlmapapi or sqlmap.")
+
     args = parser.parse_args()
 
     if args.url is None:
@@ -74,9 +84,12 @@ def parse_arguments():
         COOKIES = requests.utils.cookiejar_from_dict(cookie_dict)
 
     if args.output_file and os.path.exists(args.output_file):
-        print(error("%s already exists! Aborting to avoid overwriting it." % args.output_file))
+        os.system("rm -rf *.txt")
+        print(error("%s already exists! Please try again()." % args.output_file))
         sys.exit(1)
 
+    '''else:
+        os.system("rm -rf *.txt")'''
     return args
 
 # Pretty printing functions
@@ -178,9 +191,9 @@ class GrabbedURL:
 
     def __str__(self):
         if self.parameters is None:
-            return "[%s] %s%s" % (self.method, " " if self.method == "GET" else "", self.url)
+            return "(%s)%s%s" % (self.method, "" if self.method == "GET" else "", self.url)
         else:
-            res = "[%s] %s%s - params = %s" % (self.method, " " if self.method == "GET" else "", self.url,
+            res = "(%s)%s%s - params = %s" % (self.method, "" if self.method == "GET" else "", self.url,
                                                ", ".join(p.__str__() for p in self.parameters))
             return res
 
@@ -328,7 +341,7 @@ class RequesterThread(threading.Thread):
                         # TODO: generate random parameters?
                         r = self.session.post(url.url)
                     if r.status_code != 200:
-                        PRINT_QUEUE.put(error("Could not obtain %s (HTTP error code: %d)" % (url, r.status_code)))
+                        #PRINT_QUEUE.put(error("Could not obtain %s (HTTP error code: %d)" % (url, r.status_code)))
                         self.iq.task_done()
                         continue
 
@@ -447,5 +460,31 @@ def main():
     printer_thread.kill()
 
 
-if __name__ == "__main__":
+'''if __name__ == "__main__":
+
     main()
+    
+    #time.sleep(10)'''
+'''if __name__ == '__main__':
+    main()
+    import optimize_target
+    optimize_target.classify()'''
+#file = args.output_file
+if __name__ == '__main__':
+
+    main()
+    optimize_target.classify()
+    #if ARGS.mode ==1:
+    print("1")
+        #sqlmap.test()
+    #elif ARGS.mode ==2:
+    print("2")
+        #sqlmapapi.test()
+
+
+    '''mode_management()
+    output_manage()'''
+
+
+
+

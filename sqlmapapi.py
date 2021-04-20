@@ -15,7 +15,7 @@ from optparse import OptionParser, OptionError
 
 TreadNum = 20  # 并发线程数
 
-sqlmapapi = os.system('sqlmapapi -s')
+#os.system('python3 ./sqlmap/sqlmapapi.py -s')
 
 class AutoSqli(object):
     """
@@ -167,7 +167,7 @@ if __name__ == '__main__':
     options["options"]['level'] = opts.level
     options["options"]['risk'] = opts.risk
 
-    with open("target.txt") as f:
+    with open("get_url.txt") as f:
         urls = f.readlines()
 
     urls = [re.sub(r'\s+$', '', url) for url in urls]
@@ -188,3 +188,5 @@ if __name__ == '__main__':
         threads[i].join()
 
     print("Good Job!!!")
+def test():
+    print("11111")

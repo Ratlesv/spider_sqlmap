@@ -1,27 +1,30 @@
 #!/usr/bin/env python
 # -*-coding:utf-8 -*-
 
-import sqlmap
-import sqlmapapi
+#import sqlmap
+#import sqlmapapi
 
 
-choose = input(please choose a mod to do:\n1:sqlmap   2:sqlmapapi)
-def mod_choose():
+'''choose1 = input("please choose a mod to do:\n1:sqlmap   2:sqlmapapi")
+choose = choose1
+def main():
     """"choose sqlmap ro sqlmapapi"""
-    if choose = 1:
+    if choose == 1:
         use_sqlmap()
-    else if choose = 2:
+    elif choose == 2:
         use_sqlmapapi()
 
 
+
 def use_sqlmap():
-    sqlmap
+    print("111111")
 
 
 
 def use_sqlmapapi():
-    sqlmapapi
+    print("222222")
 
-
+if __name__ == '__main__':
+    main()
 
 
