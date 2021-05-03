@@ -13,9 +13,9 @@ import time
 
 
 ####third part####
-import optimize_target
-import sqlmap
-import sqlmapapi
+#import optimize_target
+#import sqlmap
+#import sqlmapapi
 #import mode_management
 #import output_manage
 from bs4 import BeautifulSoup
@@ -193,8 +193,9 @@ class GrabbedURL:
         if self.parameters is None:
             return "(%s)%s%s" % (self.method, "" if self.method == "GET" else "", self.url)
         else:
-            res = "(%s)%s%s - params = %s" % (self.method, "" if self.method == "GET" else "", self.url,
-                                               ", ".join(p.__str__() for p in self.parameters))
+            '''res = "(%s)%s%s - params = %s" % (self.method, "" if self.method == "GET" else "", self.url,
+                                               ", ".join(p.__str__() for p in self.parameters))'''
+            res = "(%s)%s%s" % (self.method, "" if self.method == "GET" else "", self.url)
             return res
 
     def __eq__(self, other):
@@ -473,12 +474,12 @@ def main():
 if __name__ == '__main__':
 
     main()
-    optimize_target.classify()
+    #optimize_target.classify()
     #if ARGS.mode ==1:
-    print("1")
+   # print("1")
         #sqlmap.test()
     #elif ARGS.mode ==2:
-    print("2")
+    #print("2")
         #sqlmapapi.test()
 
 

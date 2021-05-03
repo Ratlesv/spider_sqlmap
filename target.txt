@@ -8,7 +8,7 @@
 (GET)http://testphp.vulnweb.com/artists.php?artist=1
 (GET)http://testphp.vulnweb.com/artists.php?artist=2
 (GET)http://testphp.vulnweb.com/artists.php?artist=3
-(POST)http://testphp.vulnweb.com/cart.php - params = price (HIDDEN), addcart (HIDDEN)
+(POST)http://testphp.vulnweb.com/cart.php
 (GET)http://testphp.vulnweb.com/cart.php
 (GET)http://testphp.vulnweb.com/categories.php
 (GET)http://testphp.vulnweb.com/disclaimer.php
@@ -31,9 +31,9 @@
 (GET)http://testphp.vulnweb.com/product.php?pic=5
 (GET)http://testphp.vulnweb.com/product.php?pic=6
 (GET)http://testphp.vulnweb.com/product.php?pic=7
-(POST)http://testphp.vulnweb.com/search.php?test=query - params = searchFor (TEXT), goButton (SUBMIT)
-(POST)http://testphp.vulnweb.com/secured/newuser.php - params = uuname (TEXT), upass (PASSWORD), upass2 (PASSWORD), urname (TEXT), ucc (TEXT), uemail (TEXT), uphone (TEXT), signup (SUBMIT)
+(POST)http://testphp.vulnweb.com/search.php?test=query
+(POST)http://testphp.vulnweb.com/secured/newuser.php
 (GET)http://testphp.vulnweb.com/signup.php
 (GET)http://testphp.vulnweb.com/userinfo.php
-(POST)http://testphp.vulnweb.com/userinfo.php - params = uname (TEXT), pass (PASSWORD)
+(POST)http://testphp.vulnweb.com/userinfo.php
 (GET)http://testphp.vulnweb.com?pp=12

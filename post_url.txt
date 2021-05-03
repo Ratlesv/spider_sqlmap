@@ -1,4 +1,4 @@
-http://testphp.vulnweb.com/cart.php - params = price (HIDDEN), addcart (HIDDEN)
-http://testphp.vulnweb.com/search.php?test=query - params = searchFor (TEXT), goButton (SUBMIT)
-http://testphp.vulnweb.com/secured/newuser.php - params = uuname (TEXT), upass (PASSWORD), upass2 (PASSWORD), urname (TEXT), ucc (TEXT), uemail (TEXT), uphone (TEXT), signup (SUBMIT)
-http://testphp.vulnweb.com/userinfo.php - params = uname (TEXT), pass (PASSWORD)
+http://testphp.vulnweb.com/cart.php
+http://testphp.vulnweb.com/search.php?test=query
+http://testphp.vulnweb.com/secured/newuser.php
+http://testphp.vulnweb.com/userinfo.php

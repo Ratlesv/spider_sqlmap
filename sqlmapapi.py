@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # -*-coding:utf-8 -*-
 """
-批量sqlmap工具
-必要条件：
 1.安装SQLMAP
 2.启动sqlmapapi.py:python sqlmapapi.py -s
 """
@@ -13,7 +11,7 @@ import threading, sys
 import queue
 from optparse import OptionParser, OptionError
 
-TreadNum = 20  # 并发线程数
+TreadNum = 5  # 并发线程数
 
 #os.system('python3 ./sqlmap/sqlmapapi.py -s')
 
@@ -187,6 +185,6 @@ if __name__ == '__main__':
     for i in nloops:
         threads[i].join()
 
-    print("Good Job!!!")
-def test():
-    print("11111")
+    print("finish the test ")
+'''def test():
+    print("11111")'''
