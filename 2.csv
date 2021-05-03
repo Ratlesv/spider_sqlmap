@@ -1,1 +1,3 @@
 Target URL,Place,Parameter,Technique(s),Note(s)
+http://testphp.vulnweb.com/search.php?test=query,POST,searchFor,T,
+http://testphp.vulnweb.com/search.php?test=query,POST,searchFor,T,

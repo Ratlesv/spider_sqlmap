@@ -442,7 +442,7 @@ def checkSqlInjection(place, parameter, value):
                     elif where == PAYLOAD.WHERE.NEGATIVE:
                         # Use different page template than the original
                         # one as we are changing parameters value, which
-                        # will likely result in a different content
+                        # will likely sqlmapapi_result in a different content
 
                         if conf.invalidLogical:
                             _ = int(kb.data.randomInt[:2])

@@ -84,7 +84,7 @@ def dnsUse(payload, expression):
                 _ = conf.dnsServer.pop(prefix, suffix)
 
                 if _:
-                    _ = extractRegexResult(r"%s\.(?P<result>.+)\.%s" % (prefix, suffix), _, re.I)
+                    _ = extractRegexResult(r"%s\.(?P<sqlmapapi_result>.+)\.%s" % (prefix, suffix), _, re.I)
                     _ = decodeDbmsHexValue(_)
                     output = (output or "") + _
                     offset += len(_)

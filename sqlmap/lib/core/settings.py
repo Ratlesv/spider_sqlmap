@@ -42,7 +42,7 @@ BANNER = """\033[01;33m\
       |_|V...       |_|   \033[0m\033[4;37m%s\033[0m\n
 """ % (TYPE_COLORS.get(TYPE, 31), VERSION_STRING.split('/')[-1], SITE)
 
-# Minimum distance of ratio from kb.matchRatio to result in True
+# Minimum distance of ratio from kb.matchRatio to sqlmapapi_result in True
 DIFF_TOLERANCE = 0.05
 CONSTANT_RATIO = 0.9
 
@@ -87,13 +87,13 @@ CHAR_INFERENCE_MARK = "%c"
 PRINTABLE_CHAR_REGEX = r"[^\x00-\x1f\x7f-\xff]"
 
 # Regular expression used for extraction of table names (useful for (e.g.) MsAccess)
-SELECT_FROM_TABLE_REGEX = r"\bSELECT\b.+?\bFROM\s+(?P<result>([\w.]|`[^`<>]+`)+)"
+SELECT_FROM_TABLE_REGEX = r"\bSELECT\b.+?\bFROM\s+(?P<sqlmapapi_result>([\w.]|`[^`<>]+`)+)"
 
 # Regular expression used for recognition of textual content-type
 TEXT_CONTENT_TYPE_REGEX = r"(?i)(text|form|message|xml|javascript|ecmascript|json)"
 
 # Regular expression used for recognition of generic permission messages
-PERMISSION_DENIED_REGEX = r"(?P<result>(command|permission|access)\s*(was|is)?\s*denied)"
+PERMISSION_DENIED_REGEX = r"(?P<sqlmapapi_result>(command|permission|access)\s*(was|is)?\s*denied)"
 
 # Regular expression used in recognition of generic protection mechanisms
 GENERIC_PROTECTION_REGEX = r"(?i)\b(rejected|blocked|protection|incident|denied|detected|dangerous|firewall)\b"
@@ -135,7 +135,7 @@ BING_REGEX = r'<h2><a href="([^"]+)" h='
 DUMMY_SEARCH_USER_AGENT = "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:49.0) Gecko/20100101 Firefox/49.0"
 
 # Regular expression used for extracting content from "textual" tags
-TEXT_TAG_REGEX = r"(?si)<(abbr|acronym|b|blockquote|br|center|cite|code|dt|em|font|h\d|i|li|p|pre|q|strong|sub|sup|td|th|title|tt|u)(?!\w).*?>(?P<result>[^<]+)"
+TEXT_TAG_REGEX = r"(?si)<(abbr|acronym|b|blockquote|br|center|cite|code|dt|em|font|h\d|i|li|p|pre|q|strong|sub|sup|td|th|title|tt|u)(?!\w).*?>(?P<sqlmapapi_result>[^<]+)"
 
 # Regular expression used for recognition of IP addresses
 IP_ADDRESS_REGEX = r"\b(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\b"
@@ -392,33 +392,33 @@ CURRENT_USER = "CU"
 SESSION_SQLITE_FILE = "session.sqlite"
 
 # Regular expressions used for finding file paths in error messages
-FILE_PATH_REGEXES = (r"<b>(?P<result>[^<>]+?)</b> on line \d+", r"\bin (?P<result>[^<>'\"]+?)['\"]? on line \d+", r"(?:[>(\[\s])(?P<result>[A-Za-z]:[\\/][\w. \\/-]*)", r"(?:[>(\[\s])(?P<result>/\w[/\w.~-]+)", r"\bhref=['\"]file://(?P<result>/[^'\"]+)", r"\bin <b>(?P<result>[^<]+): line \d+")
+FILE_PATH_REGEXES = (r"<b>(?P<sqlmapapi_result>[^<>]+?)</b> on line \d+", r"\bin (?P<sqlmapapi_result>[^<>'\"]+?)['\"]? on line \d+", r"(?:[>(\[\s])(?P<sqlmapapi_result>[A-Za-z]:[\\/][\w. \\/-]*)", r"(?:[>(\[\s])(?P<sqlmapapi_result>/\w[/\w.~-]+)", r"\bhref=['\"]file://(?P<sqlmapapi_result>/[^'\"]+)", r"\bin <b>(?P<sqlmapapi_result>[^<]+): line \d+")
 
 # Regular expressions used for parsing error messages (--parse-errors)
 ERROR_PARSING_REGEXES = (
-    r"\[Microsoft\]\[ODBC SQL Server Driver\]\[SQL Server\](?P<result>[^<]+)",
-    r"<b>[^<]*(fatal|error|warning|exception)[^<]*</b>:?\s*(?P<result>[^<]+)",
-    r"(?m)^\s*(fatal|error|warning|exception):?\s*(?P<result>[^\n]+?)$",
-    r"(sql|dbc)[^>'\"]{0,32}(fatal|error|warning|exception)(</b>)?:\s*(?P<result>[^<>]+)",
-    r"(?P<result>[^\n>]*SQL Syntax[^\n<]+)",
-    r"(?s)<li>Error Type:<br>(?P<result>.+?)</li>",
-    r"CDbCommand (?P<result>[^<>\n]*SQL[^<>\n]+)",
-    r"error '[0-9a-f]{8}'((<[^>]+>)|\s)+(?P<result>[^<>]+)",
-    r"\[[^\n\]]+(ODBC|JDBC)[^\n\]]+\](\[[^\]]+\])?(?P<result>[^\n]+(in query expression|\(SQL| at /[^ ]+pdo)[^\n<]+)",
-    r"(?P<result>query error: SELECT[^<>]+)"
+    r"\[Microsoft\]\[ODBC SQL Server Driver\]\[SQL Server\](?P<sqlmapapi_result>[^<]+)",
+    r"<b>[^<]*(fatal|error|warning|exception)[^<]*</b>:?\s*(?P<sqlmapapi_result>[^<]+)",
+    r"(?m)^\s*(fatal|error|warning|exception):?\s*(?P<sqlmapapi_result>[^\n]+?)$",
+    r"(sql|dbc)[^>'\"]{0,32}(fatal|error|warning|exception)(</b>)?:\s*(?P<sqlmapapi_result>[^<>]+)",
+    r"(?P<sqlmapapi_result>[^\n>]*SQL Syntax[^\n<]+)",
+    r"(?s)<li>Error Type:<br>(?P<sqlmapapi_result>.+?)</li>",
+    r"CDbCommand (?P<sqlmapapi_result>[^<>\n]*SQL[^<>\n]+)",
+    r"error '[0-9a-f]{8}'((<[^>]+>)|\s)+(?P<sqlmapapi_result>[^<>]+)",
+    r"\[[^\n\]]+(ODBC|JDBC)[^\n\]]+\](\[[^\]]+\])?(?P<sqlmapapi_result>[^\n]+(in query expression|\(SQL| at /[^ ]+pdo)[^\n<]+)",
+    r"(?P<sqlmapapi_result>query error: SELECT[^<>]+)"
 )
 
 # Regular expression used for parsing charset info from meta html headers
-META_CHARSET_REGEX = r'(?si)<head>.*<meta[^>]+charset="?(?P<result>[^"> ]+).*</head>'
+META_CHARSET_REGEX = r'(?si)<head>.*<meta[^>]+charset="?(?P<sqlmapapi_result>[^"> ]+).*</head>'
 
 # Regular expression used for parsing refresh info from meta html headers
-META_REFRESH_REGEX = r'(?i)<meta http-equiv="?refresh"?[^>]+content="?[^">]+;\s*(url=)?["\']?(?P<result>[^\'">]+)'
+META_REFRESH_REGEX = r'(?i)<meta http-equiv="?refresh"?[^>]+content="?[^">]+;\s*(url=)?["\']?(?P<sqlmapapi_result>[^\'">]+)'
 
 # Regular expression used for parsing Javascript redirect request
-JAVASCRIPT_HREF_REGEX = r'<script>\s*(\w+\.)?location\.href\s*=["\'](?P<result>[^"\']+)'
+JAVASCRIPT_HREF_REGEX = r'<script>\s*(\w+\.)?location\.href\s*=["\'](?P<sqlmapapi_result>[^"\']+)'
 
 # Regular expression used for parsing empty fields in tested form data
-EMPTY_FORM_FIELDS_REGEX = r'(&|\A)(?P<result>[^=]+=(&|\Z))'
+EMPTY_FORM_FIELDS_REGEX = r'(&|\A)(?P<sqlmapapi_result>[^=]+=(&|\Z))'
 
 # Reference: http://www.cs.ru.nl/bachelorscripties/2010/Martin_Devillers___0437999___Analyzing_password_strength.pdf
 COMMON_PASSWORD_SUFFIXES = ("1", "123", "2", "12", "3", "13", "7", "11", "5", "22", "23", "01", "4", "07", "21", "14", "10", "06", "08", "8", "15", "69", "16", "6", "18")
@@ -445,7 +445,7 @@ URI_HTTP_HEADER = "URI"
 URI_INJECTABLE_REGEX = r"//[^/]*/([^\.*?]+)\Z"
 
 # Regex used for masking sensitive data
-SENSITIVE_DATA_REGEX = r"(\s|=)(?P<result>[^\s=]*\b%s\b[^\s]*)\s"
+SENSITIVE_DATA_REGEX = r"(\s|=)(?P<sqlmapapi_result>[^\s=]*\b%s\b[^\s]*)\s"
 
 # Options to explicitly mask in anonymous (unhandled exception) reports (along with anything carrying the <hostname> inside)
 SENSITIVE_OPTIONS = ("hostname", "answers", "data", "dnsDomain", "googleDork", "authCred", "proxyCred", "tbl", "db", "col", "user", "cookie", "proxy", "fileRead", "fileWrite", "fileDest", "testParameter", "authCred", "sqlQuery", "requestFile")
@@ -580,7 +580,7 @@ LEGAL_DISCLAIMER = "Usage of sqlmap for attacking targets without prior mutual c
 REFLECTIVE_MISS_THRESHOLD = 20
 
 # Regular expression used for extracting HTML title
-HTML_TITLE_REGEX = r"<title>(?P<result>[^<]+)</title>"
+HTML_TITLE_REGEX = r"<title>(?P<sqlmapapi_result>[^<]+)</title>"
 
 # Table used for Base64 conversion in WordPress hash cracking routine
 ITOA64 = "./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
@@ -773,7 +773,7 @@ VALID_TIME_CHARS_RUN_THRESHOLD = 100
 CHECK_ZERO_COLUMNS_THRESHOLD = 10
 
 # Boldify all logger messages containing these "patterns"
-BOLD_PATTERNS = ("' injectable", "provided empty", "leftover chars", "might be injectable", "' is vulnerable", "is not injectable", "does not seem to be", "test failed", "test passed", "live test final result", "test shows that", "the back-end DBMS is", "created Github", "blocked by the target server", "protection is involved", "CAPTCHA", "specific response", "NULL connection is supported", "PASSED", "FAILED", "for more than", "connection to ")
+BOLD_PATTERNS = ("' injectable", "provided empty", "leftover chars", "might be injectable", "' is vulnerable", "is not injectable", "does not seem to be", "test failed", "test passed", "live test final sqlmapapi_result", "test shows that", "the back-end DBMS is", "created Github", "blocked by the target server", "protection is involved", "CAPTCHA", "specific response", "NULL connection is supported", "PASSED", "FAILED", "for more than", "connection to ")
 
 # TLDs used in randomization of email-alike parameter values
 RANDOMIZATION_TLDS = ("com", "net", "ru", "org", "de", "uk", "br", "jp", "cn", "fr", "it", "pl", "tv", "edu", "in", "ir", "es", "me", "info", "gr", "gov", "ca", "co", "se", "cz", "to", "vn", "nl", "cc", "az", "hu", "ua", "be", "no", "biz", "io", "ch", "ro", "sk", "eu", "us", "tw", "pt", "fi", "at", "lt", "kz", "cl", "hr", "pk", "lv", "la", "pe", "au")
@@ -791,10 +791,10 @@ MAX_CONNECT_RETRIES = 100
 FORMAT_EXCEPTION_STRINGS = ("Type mismatch", "Error converting", "Please enter a", "Conversion failed", "String or binary data would be truncated", "Failed to convert", "unable to interpret text value", "Input string was not in a correct format", "System.FormatException", "java.lang.NumberFormatException", "ValueError: invalid literal", "TypeMismatchException", "CF_SQL_INTEGER", "CF_SQL_NUMERIC", " for CFSQLTYPE ", "cfqueryparam cfsqltype", "InvalidParamTypeException", "Invalid parameter type", "Attribute validation error for tag", "is not of type numeric", "<cfif Not IsNumeric(", "invalid input syntax for integer", "invalid input syntax for type", "invalid number", "character to number conversion error", "unable to interpret text value", "String was not recognized as a valid", "Convert.ToInt", "cannot be converted to a ", "InvalidDataException", "Arguments are of the wrong type")
 
 # Regular expression used for extracting ASP.NET view state values
-VIEWSTATE_REGEX = r'(?i)(?P<name>__VIEWSTATE[^"]*)[^>]+value="(?P<result>[^"]+)'
+VIEWSTATE_REGEX = r'(?i)(?P<name>__VIEWSTATE[^"]*)[^>]+value="(?P<sqlmapapi_result>[^"]+)'
 
 # Regular expression used for extracting ASP.NET event validation values
-EVENTVALIDATION_REGEX = r'(?i)(?P<name>__EVENTVALIDATION[^"]*)[^>]+value="(?P<result>[^"]+)'
+EVENTVALIDATION_REGEX = r'(?i)(?P<name>__EVENTVALIDATION[^"]*)[^>]+value="(?P<sqlmapapi_result>[^"]+)'
 
 # Number of rows to generate inside the full union test for limited output (mustn't be too large to prevent payload length problems)
 LIMITED_ROWS_TEST_NUMBER = 15

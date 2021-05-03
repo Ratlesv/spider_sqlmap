@@ -1171,7 +1171,7 @@ class BaseRequest(object):
     @DictProperty('environ', 'bottle.request.forms', read_only=True)
     def forms(self):
         """ Form values parsed from an `url-encoded` or `multipart/form-data`
-            encoded POST or PUT request body. The result is returned as a
+            encoded POST or PUT request body. The sqlmapapi_result is returned as a
             :class:`FormsDict`. All keys and values are strings. File uploads
             are stored separately in :attr:`files`. """
         forms = FormsDict()
@@ -2036,7 +2036,7 @@ class MultiDict(DictMixin):
                    present or the type conversion fails.
             :param index: An index for the list of available values.
             :param type: If defined, this callable is used to cast the value
-                    into a specific type. Exception are suppressed and result in
+                    into a specific type. Exception are suppressed and sqlmapapi_result in
                     the default value to be returned.
         """
         try:
@@ -2429,7 +2429,7 @@ class ResourceManager(object):
         """ Search for a resource and return an absolute file path, or `None`.
 
             The :attr:`path` list is searched in order. The first match is
-            returend. Symlinks are followed. The result is cached to speed up
+            returend. Symlinks are followed. The sqlmapapi_result is cached to speed up
             future lookups. """
         if name not in self.cache or DEBUG:
             for path in self.path:
@@ -3203,7 +3203,7 @@ def load(target, **namespace):
 
         * ``package.module`` returns `module` as a module object.
         * ``pack.mod:name`` returns the module variable `name` from `pack.mod`.
-        * ``pack.mod:func()`` calls `pack.mod.func()` and returns the result.
+        * ``pack.mod:func()`` calls `pack.mod.func()` and returns the sqlmapapi_result.
 
         The last form accepts not only function calls, but any type of
         expression. Keyword arguments passed to this function are available as
@@ -3849,7 +3849,7 @@ def view(tpl_name, **defaults):
 
           - return a dict of template vars to fill out the template
           - return something other than a dict and the view decorator will not
-            process the template, but return the handler result as is.
+            process the template, but return the handler sqlmapapi_result as is.
             This includes returning a HTTPResponse(dict) to get,
             for instance, JSON with autojson or other castfilters.
     """

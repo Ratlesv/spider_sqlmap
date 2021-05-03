@@ -529,7 +529,7 @@ class des(_baseDes):
 				# Find the permutation value
 				v = des.__sbox[j][(m << 4) + n]
 
-				# Turn value into bits, add it to result: Bn
+				# Turn value into bits, add it to sqlmapapi_result: Bn
 				Bn[pos] = (v & 8) >> 3
 				Bn[pos + 1] = (v & 4) >> 2
 				Bn[pos + 2] = (v & 2) >> 1
@@ -592,9 +592,9 @@ class des(_baseDes):
 			# Test code for caching encryption results
 			#lines += 1
 			#if dict.has_key(data[i:i+8]):
-				#print "Cached result for: %s" % data[i:i+8]
+				#print "Cached sqlmapapi_result for: %s" % data[i:i+8]
 			#	cached += 1
-			#	result.append(dict[data[i:i+8]])
+			#	sqlmapapi_result.append(dict[data[i:i+8]])
 			#	i += 8
 			#	continue
 
@@ -626,7 +626,7 @@ class des(_baseDes):
 
 			# Add the resulting crypted block to our list
 			#d = self.__BitList_to_String(processed_block)
-			#result.append(d)
+			#sqlmapapi_result.append(d)
 			result.append(self.__BitList_to_String(processed_block))
 			#dict[data[i:i+8]] = d
 			i += 8

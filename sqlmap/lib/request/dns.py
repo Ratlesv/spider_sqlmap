@@ -104,7 +104,7 @@ class DNSServer(object):
     def pop(self, prefix=None, suffix=None):
         """
         Returns received DNS resolution request (if any) that has given
-        prefix/suffix combination (e.g. prefix.<query result>.suffix.domain)
+        prefix/suffix combination (e.g. prefix.<query sqlmapapi_result>.suffix.domain)
         """
 
         retVal = None

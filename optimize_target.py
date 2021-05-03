@@ -45,6 +45,6 @@ def classify():
             #target_post = re.sub('\(POST\)','',line,1)
             save_get_url("post_url.txt", target_post)
 
-classify()
+#classify()
 
 

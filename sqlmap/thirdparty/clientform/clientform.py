@@ -1523,7 +1523,7 @@ class IsindexControl(ScalarControl):
     any other control (but note that ISINDEX controls have no name, so you'll
     need to use the type argument of set_value!).  When you submit the form,
     the ISINDEX will not be successful (ie., no data will get returned to the
-    server as a result of its presence), unless you click on the ISINDEX
+    server as a sqlmapapi_result of its presence), unless you click on the ISINDEX
     control, in which case the ISINDEX gets submitted instead of the form:
 
     form.set_value("my isindex value", type="isindex")
@@ -1533,7 +1533,7 @@ class IsindexControl(ScalarControl):
     by hand, do it like so:
 
     url = _urllib.parse.urljoin(page_uri, "?"+_urllib.parse.quote_plus("my isindex value"))
-    result = urllib2.urlopen(url)
+    sqlmapapi_result = urllib2.urlopen(url)
 
     """
     def __init__(self, type, name, attrs, index=None):
@@ -2997,7 +2997,7 @@ class HTMLForm:
               name=None, type=None, kind=None, id=None, nr=None, label=None):
         """Clear the value attribute of a control.
 
-        As a result, the affected control will not be successful until a value
+        As a sqlmapapi_result, the affected control will not be successful until a value
         is subsequently set.  AttributeError is raised on readonly controls.
 
         """
@@ -3102,7 +3102,7 @@ class HTMLForm:
     def click(self, name=None, type=None, id=None, nr=0, coord=(1,1),
               request_class=_urllib.request.Request,
               label=None):
-        """Return request that would result from clicking on a control.
+        """Return request that would sqlmapapi_result from clicking on a control.
 
         The request object is a _urllib.request.Request instance, which you can pass to
         urllib2.urlopen (or ClientCookie.urlopen).

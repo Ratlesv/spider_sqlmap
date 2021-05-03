@@ -42,7 +42,7 @@ def description_of(lines, name='stdin'):
         return '{0}: {1} with confidence {2}'.format(name, result['encoding'],
                                                      result['confidence'])
     else:
-        return '{0}: no result'.format(name)
+        return '{0}: no sqlmapapi_result'.format(name)
 
 
 def main(argv=None):

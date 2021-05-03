@@ -113,8 +113,8 @@ def _oneShotErrorUse(expression, field=None, chunkTest=False):
     if retVal is None or partialValue:
         try:
             while True:
-                check = r"(?si)%s(?P<result>.*?)%s" % (kb.chars.start, kb.chars.stop)
-                trimCheck = r"(?si)%s(?P<result>[^<\n]*)" % kb.chars.start
+                check = r"(?si)%s(?P<sqlmapapi_result>.*?)%s" % (kb.chars.start, kb.chars.stop)
+                trimCheck = r"(?si)%s(?P<sqlmapapi_result>[^<\n]*)" % kb.chars.start
 
                 if field:
                     nulledCastedField = agent.nullAndCastField(field)
@@ -170,11 +170,11 @@ def _oneShotErrorUse(expression, field=None, chunkTest=False):
                             logger.warn(warnMsg)
 
                         if not kb.testMode:
-                            check = r"(?P<result>[^<>\n]*?)%s" % kb.chars.stop[:2]
+                            check = r"(?P<sqlmapapi_result>[^<>\n]*?)%s" % kb.chars.stop[:2]
                             output = extractRegexResult(check, trimmed, re.IGNORECASE)
 
                             if not output:
-                                check = r"(?P<result>[^\s<>'\"]+)"
+                                check = r"(?P<sqlmapapi_result>[^\s<>'\"]+)"
                                 output = extractRegexResult(check, trimmed, re.IGNORECASE)
                             else:
                                 output = output.rstrip()
@@ -219,7 +219,7 @@ def _oneShotErrorUse(expression, field=None, chunkTest=False):
             hashDBWrite(expression, retVal)
 
     else:
-        _ = "(?si)%s(?P<result>.*?)%s" % (kb.chars.start, kb.chars.stop)
+        _ = "(?si)%s(?P<sqlmapapi_result>.*?)%s" % (kb.chars.start, kb.chars.stop)
         retVal = extractRegexResult(_, retVal) or retVal
 
     return safecharencode(retVal) if kb.safeCharEncode else retVal

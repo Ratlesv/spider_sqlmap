@@ -8,8 +8,8 @@
 (GET)http://testphp.vulnweb.com/artists.php?artist=1
 (GET)http://testphp.vulnweb.com/artists.php?artist=2
 (GET)http://testphp.vulnweb.com/artists.php?artist=3
-(POST)http://testphp.vulnweb.com/cart.php
 (GET)http://testphp.vulnweb.com/cart.php
+(POST)http://testphp.vulnweb.com/cart.php
 (GET)http://testphp.vulnweb.com/categories.php
 (GET)http://testphp.vulnweb.com/disclaimer.php
 (GET)http://testphp.vulnweb.com/guestbook.php

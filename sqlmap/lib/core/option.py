@@ -407,7 +407,7 @@ def _doSearch():
             message = "found %d results " % len(links)
             message += "for your search dork expression, but none of them "
             message += "have GET parameters to test for SQL injection. "
-            message += "Do you want to skip to the next result page? [Y/n]"
+            message += "Do you want to skip to the next sqlmapapi_result page? [Y/n]"
 
             if not readInput(message, default='Y', boolean=True):
                 raise SqlmapSilentQuitException

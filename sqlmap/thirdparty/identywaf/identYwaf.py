@@ -175,8 +175,8 @@ def retrieve(url, data=None):
         except:
             pass
 
-    match = re.search(r"<title>\s*(?P<result>[^<]+?)\s*</title>", retval[HTML], re.I)
-    retval[TITLE] = match.group("result") if match and "result" in match.groupdict() else None
+    match = re.search(r"<title>\s*(?P<sqlmapapi_result>[^<]+?)\s*</title>", retval[HTML], re.I)
+    retval[TITLE] = match.group("sqlmapapi_result") if match and "sqlmapapi_result" in match.groupdict() else None
     retval[TEXT] = re.sub(r"(?si)<script.+?</script>|<!--.+?-->|<style.+?</style>|<[^>]+>|\s+", " ", retval[HTML])
     match = re.search(r"(?im)^Server: (.+)", retval[RAW])
     retval[SERVER] = match.group(1).strip() if match else ""

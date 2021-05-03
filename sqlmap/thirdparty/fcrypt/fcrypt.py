@@ -595,7 +595,7 @@ crypt supported by the OpenBSD C library.
     ks = _set_key((password + '\0\0\0\0\0\0\0\0')[:8])
     o1, o2 = _body(ks, Eswap0, Eswap1)
 
-    # Extract 24-bit subsets of result with bytes reversed.
+    # Extract 24-bit subsets of sqlmapapi_result with bytes reversed.
     t1 = (o1 << 16 & 0xff0000) | (o1 & 0xff00) | (o1 >> 16 & 0xff)
     t2 = (o1 >> 8 & 0xff0000) | (o2 << 8 & 0xff00) | (o2 >> 8 & 0xff)
     t3 = (o2 & 0xff0000) | (o2 >> 16 & 0xff00)

@@ -962,7 +962,7 @@ def setColor(message, color=None, bold=False, level=None, istty=None):
     if message:
         if (IS_TTY or istty) and not conf.get("disableColoring"):  # colorizing handler
             if level is None:
-                levels = re.findall(r"\[(?P<result>%s)\]" % '|'.join(_[0] for _ in getPublicTypeMembers(LOGGING_LEVELS)), message)
+                levels = re.findall(r"\[(?P<sqlmapapi_result>%s)\]" % '|'.join(_[0] for _ in getPublicTypeMembers(LOGGING_LEVELS)), message)
 
                 if len(levels) == 1:
                     level = levels[0]
@@ -1883,7 +1883,7 @@ def parseFilePaths(page):
     if page:
         for regex in FILE_PATH_REGEXES:
             for match in re.finditer(regex, page):
-                absFilePath = match.group("result").strip()
+                absFilePath = match.group("sqlmapapi_result").strip()
                 page = page.replace(absFilePath, "")
 
                 if isWindowsDriveLetterPath(absFilePath):
@@ -2798,7 +2798,7 @@ def extractErrorMessage(page):
             match = re.search(regex, page, re.IGNORECASE)
 
             if match:
-                candidate = htmlUnescape(match.group("result")).replace("<br>", "\n").strip()
+                candidate = htmlUnescape(match.group("sqlmapapi_result")).replace("<br>", "\n").strip()
                 if candidate and (1.0 * len(re.findall(r"[^A-Za-z,. ]", candidate)) / len(candidate) > MIN_ERROR_PARSING_NON_WRITING_RATIO):
                     retVal = candidate
                     break
@@ -3050,23 +3050,23 @@ def enumValueToNameLookup(type_, value_):
 @cachedmethod
 def extractRegexResult(regex, content, flags=0):
     """
-    Returns 'result' group value from a possible match with regex on a given
+    Returns 'sqlmapapi_result' group value from a possible match with regex on a given
     content
 
-    >>> extractRegexResult(r'a(?P<result>[^g]+)g', 'abcdefg')
+    >>> extractRegexResult(r'a(?P<sqlmapapi_result>[^g]+)g', 'abcdefg')
     'bcdef'
     """
 
     retVal = None
 
-    if regex and content and "?P<result>" in regex:
+    if regex and content and "?P<sqlmapapi_result>" in regex:
         if isinstance(content, six.binary_type) and isinstance(regex, six.text_type):
             regex = getBytes(regex)
 
         match = re.search(regex, content, flags)
 
         if match:
-            retVal = match.group("result")
+            retVal = match.group("sqlmapapi_result")
 
     return retVal
 
@@ -3086,7 +3086,7 @@ def extractTextTagContent(page):
         except MemoryError:
             page = page.replace(REFLECTED_VALUE_MARKER, "")
 
-    return filterNone(_.group("result").strip() for _ in re.finditer(TEXT_TAG_REGEX, page))
+    return filterNone(_.group("sqlmapapi_result").strip() for _ in re.finditer(TEXT_TAG_REGEX, page))
 
 def trimAlphaNum(value):
     """
@@ -3302,7 +3302,7 @@ def isDBMSVersionAtLeast(minimum):
         elif '<' in version:
             correction = -VERSION_COMPARISON_CORRECTION
 
-        version = extractRegexResult(r"(?P<result>[0-9][0-9.]*)", version)
+        version = extractRegexResult(r"(?P<sqlmapapi_result>[0-9][0-9.]*)", version)
 
         if version:
             if '.' in version:
@@ -3835,7 +3835,7 @@ def getLatestRevision():
 
     try:
         content = getUnicode(_urllib.request.urlopen(req).read())
-        retVal = extractRegexResult(r"VERSION\s*=\s*[\"'](?P<result>[\d.]+)", content)
+        retVal = extractRegexResult(r"VERSION\s*=\s*[\"'](?P<sqlmapapi_result>[\d.]+)", content)
     except:
         pass
 
@@ -4723,7 +4723,7 @@ def getHostHeader(url):
         retVal = _urllib.parse.urlparse(url).netloc
 
         if re.search(r"http(s)?://\[.+\]", url, re.I):
-            retVal = extractRegexResult(r"http(s)?://\[(?P<result>.+)\]", url)
+            retVal = extractRegexResult(r"http(s)?://\[(?P<sqlmapapi_result>.+)\]", url)
         elif any(retVal.endswith(':%d' % _) for _ in (80, 443)):
             retVal = retVal.split(':')[0]
 
@@ -5102,7 +5102,7 @@ def zeroDepthSearch(expression, value):
     Searches occurrences of value inside expression at 0-depth level
     regarding the parentheses
 
-    >>> _ = "SELECT (SELECT id FROM users WHERE 2>1) AS result FROM DUAL"; _[zeroDepthSearch(_, "FROM")[0]:]
+    >>> _ = "SELECT (SELECT id FROM users WHERE 2>1) AS sqlmapapi_result FROM DUAL"; _[zeroDepthSearch(_, "FROM")[0]:]
     'FROM DUAL'
     >>> _ = "a(b; c),d;e"; _[zeroDepthSearch(_, "[;, ]")[0]:]
     ',d;e'
@@ -5182,9 +5182,9 @@ def parseRequestFile(reqFile, checkParams=True):
         reqResList = content.split(WEBSCARAB_SPLITTER)
 
         for request in reqResList:
-            url = extractRegexResult(r"URL: (?P<result>.+?)\n", request, re.I)
-            method = extractRegexResult(r"METHOD: (?P<result>.+?)\n", request, re.I)
-            cookie = extractRegexResult(r"COOKIE: (?P<result>.+?)\n", request, re.I)
+            url = extractRegexResult(r"URL: (?P<sqlmapapi_result>.+?)\n", request, re.I)
+            method = extractRegexResult(r"METHOD: (?P<sqlmapapi_result>.+?)\n", request, re.I)
+            cookie = extractRegexResult(r"COOKIE: (?P<sqlmapapi_result>.+?)\n", request, re.I)
 
             if not method or not url:
                 logger.debug("not a valid WebScarab log data")

@@ -61,7 +61,7 @@ def _search(dork):
         raise SqlmapConnectionException(errMsg)
 
     gpage = conf.googlePage if conf.googlePage > 1 else 1
-    logger.info("using search result page #%d" % gpage)
+    logger.info("using search sqlmapapi_result page #%d" % gpage)
 
     url = "https://www.google.com/search?"
     url += "q=%s&" % urlencode(dork, convall=True)

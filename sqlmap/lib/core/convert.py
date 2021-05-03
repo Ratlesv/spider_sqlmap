@@ -423,7 +423,7 @@ def stdoutEncode(value):
 
                 warnMsg = "cannot properly display (some) Unicode characters "
                 warnMsg += "inside your terminal ('%s') environment. All " % encoding
-                warnMsg += "unhandled occurrences will result in "
+                warnMsg += "unhandled occurrences will sqlmapapi_result in "
                 warnMsg += "replacement with '?' character. Please, find "
                 warnMsg += "proper character representation inside "
                 warnMsg += "corresponding output files"

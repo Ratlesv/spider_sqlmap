@@ -203,7 +203,7 @@ def _randomFillBlankFields(value):
 
         if readInput(message, default='Y', boolean=True):
             for match in re.finditer(EMPTY_FORM_FIELDS_REGEX, retVal):
-                item = match.group("result")
+                item = match.group("sqlmapapi_result")
                 if not any(_ in item for _ in IGNORE_PARAMETERS) and not re.search(ASP_NET_CONTROL_REGEX, item):
                     newValue = randomStr() if not re.search(r"^id|id$", item, re.I) else randomInt()
                     if item[-1] == DEFAULT_GET_POST_DELIMITER:

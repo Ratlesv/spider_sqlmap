@@ -154,9 +154,9 @@ def vulnTest():
 
     clearConsoleLine()
     if retVal:
-        logger.info("vuln test final result: PASSED")
+        logger.info("vuln test final sqlmapapi_result: PASSED")
     else:
-        logger.error("vuln test final result: FAILED")
+        logger.error("vuln test final sqlmapapi_result: FAILED")
 
     return retVal
 
@@ -255,9 +255,9 @@ def bedTest():
 
     clearConsoleLine()
     if retVal:
-        logger.info("bed test final result: PASSED")
+        logger.info("bed test final sqlmapapi_result: PASSED")
     else:
-        logger.error("best test final result: FAILED")
+        logger.error("best test final sqlmapapi_result: FAILED")
 
     return retVal
 
@@ -405,8 +405,8 @@ def smokeTest():
 
     clearConsoleLine()
     if retVal:
-        logger.info("smoke test final result: PASSED")
+        logger.info("smoke test final sqlmapapi_result: PASSED")
     else:
-        logger.error("smoke test final result: FAILED")
+        logger.error("smoke test final sqlmapapi_result: FAILED")
 
     return retVal

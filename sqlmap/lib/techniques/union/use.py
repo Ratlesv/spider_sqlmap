@@ -97,11 +97,11 @@ def _oneShotUnionUse(expression, unpack=True, limited=False):
 
         if kb.jsonAggMode:
             if Backend.isDbms(DBMS.MSSQL):
-                output = extractRegexResult(r"%s(?P<result>.*)%s" % (kb.chars.start, kb.chars.stop), page or "")
+                output = extractRegexResult(r"%s(?P<sqlmapapi_result>.*)%s" % (kb.chars.start, kb.chars.stop), page or "")
                 if output:
                     try:
                         retVal = ""
-                        fields = re.findall(r'"([^"]+)":', extractRegexResult(r"{(?P<result>[^}]+)}", output))
+                        fields = re.findall(r'"([^"]+)":', extractRegexResult(r"{(?P<sqlmapapi_result>[^}]+)}", output))
                         for row in json.loads(output):
                             retVal += "%s%s%s" % (kb.chars.start, kb.chars.delimiter.join(getUnicode(row[field] or NULL) for field in fields), kb.chars.stop)
                     except:
@@ -109,11 +109,11 @@ def _oneShotUnionUse(expression, unpack=True, limited=False):
                     else:
                         retVal = getUnicode(retVal)
             elif Backend.isDbms(DBMS.PGSQL):
-                output = extractRegexResult(r"(?P<result>%s.*%s)" % (kb.chars.start, kb.chars.stop), page or "")
+                output = extractRegexResult(r"(?P<sqlmapapi_result>%s.*%s)" % (kb.chars.start, kb.chars.stop), page or "")
                 if output:
                     retVal = output
             else:
-                output = extractRegexResult(r"%s(?P<result>.*?)%s" % (kb.chars.start, kb.chars.stop), page or "")
+                output = extractRegexResult(r"%s(?P<sqlmapapi_result>.*?)%s" % (kb.chars.start, kb.chars.stop), page or "")
                 if output:
                     try:
                         retVal = ""
@@ -138,19 +138,19 @@ def _oneShotUnionUse(expression, unpack=True, limited=False):
                 singleTimeWarnMessage(warnMsg)
                 page = page.replace(kb.chars.stop[:-1], kb.chars.stop)
 
-            retVal = _("(?P<result>%s.*%s)" % (kb.chars.start, kb.chars.stop))
+            retVal = _("(?P<sqlmapapi_result>%s.*%s)" % (kb.chars.start, kb.chars.stop))
 
         if retVal is not None:
             retVal = getUnicode(retVal, kb.pageEncoding)
 
-            # Special case when DBMS is Microsoft SQL Server and error message is used as a result of UNION injection
+            # Special case when DBMS is Microsoft SQL Server and error message is used as a sqlmapapi_result of UNION injection
             if Backend.isDbms(DBMS.MSSQL) and wasLastResponseDBMSError():
                 retVal = htmlUnescape(retVal).replace("<br>", "\n")
 
             hashDBWrite("%s%s" % (conf.hexConvert or False, expression), retVal)
 
         elif not kb.jsonAggMode:
-            trimmed = _("%s(?P<result>.*?)<" % (kb.chars.start))
+            trimmed = _("%s(?P<sqlmapapi_result>.*?)<" % (kb.chars.start))
 
             if trimmed:
                 warnMsg = "possible server trimmed output detected "

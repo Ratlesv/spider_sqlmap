@@ -47,7 +47,7 @@ def dirtyPatches():
     Place for "dirty" Python related patches
     """
 
-    # accept overly long result lines (e.g. SQLi results in HTTP header responses)
+    # accept overly long sqlmapapi_result lines (e.g. SQLi results in HTTP header responses)
     _http_client._MAXLINE = 1 * 1024 * 1024
 
     # prevent double chunked encoding in case of sqlmap chunking (Note: Python3 does it automatically if 'Content-length' is missing)

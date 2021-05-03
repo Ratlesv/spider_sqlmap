@@ -1,9 +1,6 @@
 # -*-coding:utf-8 -*-
 """
-批量sqlmap工具
-必要条件：
-1.安装SQLMAP
-2.启动sqlmapapi.py:python sqlmapapi.py -s 
+启动sqlmapapi.py:python sqlmapapi.py -s
 """
 import requests
 import time,re,os
@@ -16,10 +13,8 @@ TreadNum=20 #并发线程数
 
 class AutoSqli(object):
 
-    """
-    使用sqlmapapi的方法进行与sqlmapapi建立的server进行交互
+    #使用sqlmapapi的方法进行与sqlmapapi建立的server进行交互
 
-    """
 
     def __init__(self, server='', target='',data = '',referer = '',cookie = ''):
         super(AutoSqli, self).__init__()
@@ -83,7 +78,7 @@ class AutoSqli(object):
         else:
             print (self.target+' injection')
             date=time.strftime('%Y-%m-%d %H:%M:%S',time.localtime())
-            f=open('result/injection.txt','a')
+            f=open('sqlmapapi_result/injection.txt','a')
             rs = "================================================\n"
             rs += date+"\n"
             rs += self.target+"\n"
@@ -185,4 +180,4 @@ if __name__ == '__main__':
     for i in nloops:
         threads[i].join()
     
-    print ("Good Job!!!")
+    print ("The test is completed,View the results under the directory sqlmapapi_result")

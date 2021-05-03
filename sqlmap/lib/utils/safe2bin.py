@@ -20,7 +20,7 @@ else:
     string_types = (basestring,)
 
 # Regex used for recognition of hex encoded characters
-HEX_ENCODED_CHAR_REGEX = r"(?P<result>\\x[0-9A-Fa-f]{2})"
+HEX_ENCODED_CHAR_REGEX = r"(?P<sqlmapapi_result>\\x[0-9A-Fa-f]{2})"
 
 # Raw chars that will be safe encoded to their slash (\) representations (e.g. newline to \n)
 SAFE_ENCODE_SLASH_REPLACEMENTS = "\t\n\r\x0b\x0c"
@@ -81,7 +81,7 @@ def safechardecode(value, binary=False):
         while True:
             match = re.search(HEX_ENCODED_CHAR_REGEX, retVal)
             if match:
-                retVal = retVal.replace(match.group("result"), unichr(ord(binascii.unhexlify(match.group("result").lstrip("\\x")))))
+                retVal = retVal.replace(match.group("sqlmapapi_result"), unichr(ord(binascii.unhexlify(match.group("sqlmapapi_result").lstrip("\\x")))))
             else:
                 break
 

@@ -61,7 +61,7 @@ def update():
             output = getText(output)
 
         if success:
-            logger.info("%s the latest revision '%s'" % ("already at" if "already up-to-date" in output else "updated to", extractRegexResult(r"\binstalled sqlmap-(?P<result>\d+\.\d+\.\d+)", output) or extractRegexResult(r"\((?P<result>\d+\.\d+\.\d+)\)", output)))
+            logger.info("%s the latest revision '%s'" % ("already at" if "already up-to-date" in output else "updated to", extractRegexResult(r"\binstalled sqlmap-(?P<sqlmapapi_result>\d+\.\d+\.\d+)", output) or extractRegexResult(r"\((?P<sqlmapapi_result>\d+\.\d+\.\d+)\)", output)))
         else:
             logger.error("update could not be completed ('%s')" % re.sub(r"[^a-z0-9:/\\]+", " ", output).strip())
 

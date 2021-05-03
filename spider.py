@@ -21,7 +21,9 @@ import time
 from bs4 import BeautifulSoup
 import requests
 #from fake_useragent import UserAgent
-
+import autosqlmap
+import optimize_target
+#usuge
 ARGS = None
 IGNORED_EXTENSIONS = [".pdf", ".jpg", ".jpeg", ".png", ".gif", ".doc", ".docx", ".eps", ".wav",
                       ".pdf", ".tiff", ".ico", ".flv", ".mp4", ".mp3", ".avi", ".mpg", ".gz",
@@ -35,9 +37,9 @@ USER_AGENT = {"User-Agent": "Mozilla/5.0 (Windows NT 5.1; rv:5.0.1) Gecko/201001
 COOKIES = None
 PRINT_QUEUE = None
 
-###############################################################################
-# Usage
-###############################################################################
+####################################################################################
+#default usage:python3 spider.py -u http://testphp.vulnweb.com  -m 10 -o target.txt#
+####################################################################################
 
 def parse_arguments():
     parser = argparse.ArgumentParser(description="Map a website by recursively grabbing all its URLs.")
@@ -474,13 +476,16 @@ def main():
 if __name__ == '__main__':
 
     main()
-    #optimize_target.classify()
+    optimize_target.classify()
+    autosqlmap.sqlmap_batch()
+    autosqlmap.sqlmap_post_batch()
     #if ARGS.mode ==1:
    # print("1")
         #sqlmap.test()
     #elif ARGS.mode ==2:
     #print("2")
         #sqlmapapi.test()
+    os.system("python autoSqlmapapi.py ")
 
 
     '''mode_management()

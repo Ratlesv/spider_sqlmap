@@ -55,7 +55,7 @@ class SmartRedirectHandler(_urllib.request.HTTPRedirectHandler):
                 kb.redirectChoice = REDIRECTION.YES if readInput(msg, default='Y', boolean=True) else REDIRECTION.NO
 
             if kb.redirectChoice == REDIRECTION.YES and method == HTTPMETHOD.POST and kb.resendPostOnRedirect is None:
-                msg = "redirect is a result of a "
+                msg = "redirect is a sqlmapapi_result of a "
                 msg += "POST request. Do you want to "
                 msg += "resend original POST data to a new "
                 msg += "location? [%s] " % ("Y/n" if not kb.originalPage else "y/N")

@@ -83,7 +83,7 @@ class AutoSqli(object):
         else:
             print(self.target + ' injection')
             date = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
-            f = open('result/injection.txt', 'a')
+            f = open('sqlmapapi_result/injection.txt', 'a')
             rs = "================================================\n"
             rs += date + "\n"
             rs += self.target + "\n"
