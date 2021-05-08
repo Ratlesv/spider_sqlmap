@@ -11,9 +11,9 @@ def call_sqlmap():
 
     os.system('python3 sqlmap/sqlmap.py --url %s ==randon-agent --batch'%test_url)
 def sqlmap_batch():
-    os.system('python3 sqlmap/sqlmap.py -m get_url.txt  --results-file=1.csv ')
+    os.system('python3 sqlmap/sqlmap.py -m get_url.txt  --results-file=GET.csv --output-dir=/home/iot/Desktop/spider_sqlmap/sqlmap_result')
 def sqlmap_post_batch():
-    os.system('python3 sqlmap/sqlmap.py -m post_url.txt --forms  --results-file=2.csv')
+    os.system('python3 sqlmap/sqlmap.py -m post_url.txt --forms  --results-file=POST.csv --output-dir=/home/iot/Desktop/spider_sqlmap/sqlmap_result')
 
 def test():
     print(2222)
