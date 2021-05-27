@@ -212,8 +212,6 @@ class GrabbedURL:
         return self.__str__().__hash__()
 
 ###############################################################################
-#
-###############################################################################
 
 def create_session():
     """
@@ -485,7 +483,7 @@ if __name__ == '__main__':
     #elif ARGS.mode ==2:
     #print("2")
         #sqlmapapi.test()
-    os.system("python autoSqlmapapi.py ")
+    os.system("python2 autoSqlmapapi.py ")
 
 
     '''mode_management()

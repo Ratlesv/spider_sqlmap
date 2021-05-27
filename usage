@@ -1,0 +1,4 @@
+虚拟环境终端下运行：
+python3 spider.py -u http://testphp.vulnweb.com  -m 10 -o target.txt
+sqlmap目录下开启sqlmapapi服务：
+python3 sqlmapapi.py -s

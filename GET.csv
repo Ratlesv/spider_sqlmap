@@ -1,0 +1,6 @@
+Target URL,Place,Parameter,Technique(s),Note(s)
+http://testphp.vulnweb.com/artists.php?artist=1,GET,artist,BTU,
+http://testphp.vulnweb.com/artists.php?artist=1,GET,artist,BTU,
+http://testphp.vulnweb.com/artists.php?artist=2,GET,artist,BTU,
+http://testphp.vulnweb.com/listproducts.php?cat=1,GET,cat,BTU,
+http://testphp.vulnweb.com/product.php?pic=1,GET,pic,BTU,

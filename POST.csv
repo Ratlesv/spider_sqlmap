@@ -1,0 +1,3 @@
+Target URL,Place,Parameter,Technique(s),Note(s)
+http://testphp.vulnweb.com/userinfo.php,POST,uname,BTU,
+http://testphp.vulnweb.com/userinfo.php,POST,pass,BTU,
